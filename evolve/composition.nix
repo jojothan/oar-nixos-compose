@@ -4,16 +4,17 @@
     let
       commonConfig = import ./common_config.nix { inherit pkgs modulesPath nur flavour; };
     in {
-      frontend = { ... }: {
-        imports = [ commonConfig ];
-        # services.phpfpm.phpPackage = pkgs.php74;
-        services.oar.client.enable = true;
-        #services.oar.web.enable = true;
-        #services.oar.web.drawgantt.enable = true;
-      };
+      #frontend = { ... }: {
+      #  imports = [ commonConfig ];
+      #  # services.phpfpm.phpPackage = pkgs.php74;
+      #  services.oar.client.enable = true;
+      #  #services.oar.web.enable = true;
+      #  #services.oar.web.drawgantt.enable = true;
+      #};
       server = { ... }: {
         imports = [ commonConfig ];
         services.oar.server.enable = true;
+        services.oar.client.enable = true;
         #services.oar.package = pkgs.oar-with-plugins;
         
         services.oar.dbserver.enable = true;
